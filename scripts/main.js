@@ -1,10 +1,11 @@
 import Jogo from "./jogo.js";
 
-// Variáveis globais
+
+// GLOBAL VARS
 let canvas = document.getElementById("gameCanvas");
 let ctx = canvas.getContext("2d");
 
-// Criar e iniciar o jogo
+// START GAME
 const jogo = new Jogo(ctx, canvas);
 jogo.configurarJogo();
 jogo.iniciar();

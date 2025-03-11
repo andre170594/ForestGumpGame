@@ -49,14 +49,14 @@ const nivel2 = new Nivel(
     "Futebol Americano",
     "#98FB98",
     [],
-    (contadorT) => contadorT >= 5
+    (contadorT) => contadorT >= 3
 );
 
 const nivel3 = new Nivel(
     "Carreira Militar",
     "#FFD700",
     [],
-    (contadorT) => contadorT >= 7
+    (contadorT) => contadorT >= 3
 );
 
 export { Nivel, nivel1, nivel2, nivel3 };
