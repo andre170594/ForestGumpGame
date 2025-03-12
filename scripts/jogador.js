@@ -5,32 +5,40 @@ export default class Jogador {
         this.largura = largura;
         this.altura = altura;
         this.cor = cor;
+
         this.velocidadeY = 0;
         this.velocidadeX = 0;
+        this.speed = 5; // Valor padrão inicial (atualizado pelo nível)
+        this.alturaJump = -15;
+        this.gravidade = 0.8;
+
         this.noChao = false;
         this.canvas = canvas;
         this.score = 0;
     }
 
-    atualizar(gravidade) {
-        // Atualizar posição vertical
-        this.velocidadeY += gravidade;
+
+    aplicarConfiguracoesDoNivel(nivel) {
+        this.gravidade = nivel.gravidade;
+        this.speed = nivel.speed;
+        this.alturaJump = nivel.alturaJump;
+    }
+
+    atualizar() {
+        this.velocidadeY += this.gravidade; // Atualizar posição vertical
         this.y += this.velocidadeY;
 
-        // Impedir que o jogador caia do chão
         if (this.y + this.altura > this.canvas.height) {
             this.y = this.canvas.height - this.altura;
             this.velocidadeY = 0;
             this.noChao = true;
         }
 
-        // Atualizar posição horizontal
-        this.x += this.velocidadeX;
+        this.x += this.velocidadeX; // Atualizar posição horizontal
 
-        // Manter o jogador dentro dos limites do canvas
-        if (this.x < 0) this.x = 0; // Não deixa sair pela esquerda
+        if (this.x < 0) this.x = 0;
         if (this.x + this.largura > this.canvas.width) {
-            this.x = this.canvas.width - this.largura; // Não deixa sair pela direita
+            this.x = this.canvas.width - this.largura;
         }
     }
 
@@ -41,20 +49,20 @@ export default class Jogador {
 
     saltar() {
         if (this.noChao) {
-            this.velocidadeY = -15; // Velocidade do salto
+            this.velocidadeY = this.alturaJump;
             this.noChao = false;
         }
     }
 
     mover(direcao) {
         if (direcao === "esquerda") {
-            this.velocidadeX = -5; // Velocidade para a esquerda
+            this.velocidadeX = -this.speed;
         } else if (direcao === "direita") {
-            this.velocidadeX = 5; // Velocidade para a direita
+            this.velocidadeX = this.speed;
         }
     }
 
     parar() {
-        this.velocidadeX = 0; // Para a movimentação horizontal
+        this.velocidadeX = 0;
     }
 }

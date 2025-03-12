@@ -5,6 +5,7 @@ import { mostrarTelaTransicao } from "/telas/telaTransicao/telaTransicao.js"
 import { mostrarTelaFinal } from "/telas/telaFinal/telaFinal.js";
 import {mostrarTelaCreditos} from "/telas/telaCreditos/telaCreditos.js";
 
+
                                                                                                                          // CLASS JOGO CONTROLA TUDO (CEREBRO!)
 export default class Jogo {                                                                                              // RECEBE CONTEXTO E CANVAS
     constructor(ctx, canvas) {
@@ -65,30 +66,24 @@ export default class Jogo {                                                     
 
     loop() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.atualizar(0.8);
+        this.atualizar();
         this.desenhar();
         requestAnimationFrame(() => this.loop());
     }
 
-    atualizar(gravidade) {
-        if (this.niveis[this.nivelAtual]) {
-            this.niveis[this.nivelAtual].atualizar();
-            // Verifica se o objetivo do nível foi concluído
-            if (this.niveis[this.nivelAtual].objetivoConcluido && !this.emTransicao) {
-                this.transitarParaProximoNivel();
-                return;
-            }
+    atualizar() {
+        this.niveis[this.nivelAtual].atualizar();
+        if (this.niveis[this.nivelAtual].objetivoConcluido && !this.emTransicao) {
+            this.transitarParaProximoNivel();
+            return;
         }
-        this.jogador.atualizar(gravidade);
+        this.jogador.atualizar();
     }
 
     desenhar() {                                                                                                  // DESENHA ELEMENTOS APOS UPDATE
-        if (this.niveis[this.nivelAtual]) {
-            this.niveis[this.nivelAtual].desenhar(this.ctx);
-        }
-        if (this.jogador) {
-            this.jogador.desenhar(this.ctx);
-        }
+        this.niveis[this.nivelAtual].desenhar(this.ctx);
+        this.jogador.desenhar(this.ctx);
+
         this.ctx.fillStyle = "black";
         this.ctx.font = "24px Arial";
         this.ctx.fillText(
@@ -117,18 +112,13 @@ export default class Jogo {                                                     
     }
 
     transitarParaProximoNivel() {
-        if (this.emTransicao)                                                                                           // Bloqueia múltiplas transições simultâneas
-            return;
+        if (this.emTransicao) return;
         this.emTransicao = true;
 
         if (this.nivelAtual + 1 < this.niveis.length) {
             mostrarTelaTransicao(
                 true,
-                () => {
-                    this.nivelAtual++; // Avança para o próximo nível
-                    this.niveis[this.nivelAtual].reiniciarObjetivo(); // Reinicia o próximo nível
-                    this.emTransicao = false; // Libera a transição
-                },
+                () => this.avancarNivel(),
                 null
             );
         } else {
@@ -143,6 +133,12 @@ export default class Jogo {                                                     
                 }
             );
         }
+    }
+    avancarNivel() {
+        this.nivelAtual++;
+        this.niveis[this.nivelAtual].reiniciarObjetivo();
+        this.jogador.aplicarConfiguracoesDoNivel(this.niveis[this.nivelAtual]);
+        this.emTransicao = false;
     }
 
     backToBegin(){

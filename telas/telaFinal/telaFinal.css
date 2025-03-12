@@ -1,37 +1,50 @@
 #finalTela {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
+    top: 50%;
+    left: 50%;
+    width: 800px; /* Largura fixa do "quadro" */
+    height: 600px; /* Altura fixa do "quadro" */
+    background-color: rgb(64, 19, 19);
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transform: translate(-50%, -50%); /* Centraliza o quadro na tela */
+    border: 2px solid white; /* Adiciona borda simulando um canvas */
+    border-radius: 10px; /* Bordas arredondadas para suavidade */
     z-index: 9999;
 }
 
 #finalTela h1 {
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-align: center;
 }
 
 #finalTela button {
-    padding: 10px 20px;
+    padding: 15px 30px;
     font-size: 18px;
     cursor: pointer;
     border: none;
     border-radius: 5px;
     margin: 10px;
+    transition: background-color 0.3s ease;
 }
 
 .botaoMenu {
     background-color: #007BFF; /* Azul */
-    color: white;
+}
+
+.botaoMenu:hover {
+    background-color: #0056b3; /* Azul mais escuro */
 }
 
 .botaoCreditos {
     background-color: #FF5733; /* Vermelho */
-    color: white;
+}
+
+.botaoCreditos:hover {
+    background-color: #c44129; /* Vermelho mais escuro */
 }

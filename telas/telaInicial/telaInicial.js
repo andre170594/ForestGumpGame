@@ -1,15 +1,20 @@
 export function mostrarTelaInicial(callbackIniciarJogo) {
-    const telaInicial = document.getElementById("startScreen");
-    const startButton = document.getElementById("startButton");
-    const gameCanvas = document.getElementById("gameCanvas");
+    fetch('/telas/telaInicial/telaInicial.html')
+        .then(response => response.text())
+        .then(html => {
+            const container = document.createElement('div');
+            container.innerHTML = html;
 
-    gameCanvas.style.display = "none";                                                                                  // Esconde o canvas inicialmente
-    telaInicial.style.display = "block";                                                                                // Exibe a tela inicial
+            const telaInicial = container.querySelector('#startScreen');
+            const startButton = telaInicial.querySelector('#startButton');
 
+            document.getElementById('gameCanvas').style.display = 'none';                                       // Esconde o canvas e mostra a tela inicial
+            document.body.appendChild(telaInicial);
 
-    startButton.addEventListener("click", () => {                                                     // Adiciona listener no botao, quando for clicked executa o callback
-        telaInicial.style.display = "none";
-        gameCanvas.style.display = "block";
-        callbackIniciarJogo();
-    });
+            startButton.addEventListener('click', () => {                                                   // Configura o botão para iniciar o jogo
+                telaInicial.remove(); // Remove a tela inicial do DOM
+                document.getElementById('gameCanvas').style.display = 'block';
+                callbackIniciarJogo();
+            });
+        });
 }
