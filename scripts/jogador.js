@@ -1,5 +1,5 @@
 export default class Jogador {
-    constructor(x, y, largura = 50, altura = 50, cor = "blue", canvas) {
+    constructor(x, y, largura = 50, altura = 50, cor = "blue") {
         this.x = x;
         this.y = y;
         this.largura = largura;
@@ -8,12 +8,11 @@ export default class Jogador {
 
         this.velocidadeY = 0;
         this.velocidadeX = 0;
-        this.speed = 5; // Valor padrão inicial (atualizado pelo nível)
+        this.speed = 5;
         this.alturaJump = -15;
         this.gravidade = 0.8;
 
-        this.noChao = false;
-        this.canvas = canvas;
+        this.noChao = false;;
         this.score = 0;
     }
 
@@ -24,21 +23,21 @@ export default class Jogador {
         this.alturaJump = nivel.alturaJump;
     }
 
-    atualizar() {
-        this.velocidadeY += this.gravidade; // Atualizar posição vertical
+    atualizar(canvas) {
+        this.velocidadeY += this.gravidade;                                         // Atualizar posição vertical
         this.y += this.velocidadeY;
 
-        if (this.y + this.altura > this.canvas.height) {
-            this.y = this.canvas.height - this.altura;
+        if (this.y + this.altura > canvas.height) {                              // nao cai do chao
+            this.y = canvas.height - this.altura;
             this.velocidadeY = 0;
             this.noChao = true;
         }
 
-        this.x += this.velocidadeX; // Atualizar posição horizontal
+        this.x += this.velocidadeX;                                                 // Atualizar posição horizontal
 
         if (this.x < 0) this.x = 0;
-        if (this.x + this.largura > this.canvas.width) {
-            this.x = this.canvas.width - this.largura;
+        if (this.x + this.largura > canvas.width) {
+            this.x = canvas.width - this.largura;
         }
     }
 

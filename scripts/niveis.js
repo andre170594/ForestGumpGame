@@ -1,5 +1,5 @@
 class Nivel {
-    constructor(nome, fundo, objetos = [], objetivoFunc = () => false, config = {}) {
+    constructor(nome, fundo, objetos = [], objetivoFunc = () => false, gravidade,speed,alturaJump) {
         this.nome = nome;
         this.fundo = fundo;
         this.objetos = objetos;
@@ -7,10 +7,10 @@ class Nivel {
         this.objetivoConcluido = false;
         this.contadorT = 0;
 
-        // Configurações específicas do nível
-        this.gravidade = config.gravidade || 0.8; // Valor padrão
-        this.speed = config.speed || 5;
-        this.alturaJump = config.alturaJump || -15;
+
+        this.gravidade = gravidade;
+        this.speed = speed;
+        this.alturaJump = alturaJump;
     }
 
     atualizar() {
@@ -42,22 +42,35 @@ class Nivel {
         this.contadorT++;
     }
 }
-const nivel1 = new Nivel("Infância no Alabama", "#87CEEB", [], (nivel) => nivel.contadorT >= 3, {
-    gravidade: 0.5,
-    speed: 4,
-    alturaJump: -12
-});
 
-const nivel2 = new Nivel("Futebol Americano", "#98FB98", [], (nivel) => nivel.contadorT >= 3, {
-    gravidade: 1.0,
-    speed: 15,
-    alturaJump: -18
-});
+const nivel1 = new Nivel(
+    "Infância no Alabama",
+    "#87CEEB",
+    [],
+    (nivel) => nivel.contadorT >= 3,
+    0.5,
+    5,
+    -5
+);
 
-const nivel3 = new Nivel("Carreira Militar", "#FFD700", [], (nivel) => nivel.contadorT >= 3, {
-    gravidade: 0.7,
-    speed: 5,
-    alturaJump: -10
-});
+const nivel2 = new Nivel(
+    "Futebol Americano",
+    "#98FB98",
+    [],
+    (nivel) => nivel.contadorT >= 3,
+    1.0,
+    15,
+    -18
+);
+
+const nivel3 = new Nivel(
+    "Carreira Militar",
+    "#FFD700",
+    [],
+    (nivel) => nivel.contadorT >= 3,
+    0.7,
+    5,
+     -10
+);
 
 export { nivel1, nivel2, nivel3 };

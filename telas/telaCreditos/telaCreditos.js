@@ -1,15 +1,11 @@
 export function mostrarTelaCreditos(callbackMenu) {
-    fetch('/telas/telaCreditos/telaCreditos.html') // Corrija o caminho para o HTML
+    fetch('/telas/telaCreditos/telaCreditos.html')
         .then(response => response.text())
         .then(html => {
             // Adiciona o HTML carregado no DOM
             const container = document.createElement('div');
             container.innerHTML = html;
-            const creditosDiv = container.querySelector('#creditosTela'); // Certifique-se do ID correto no HTML
-
-            if (!creditosDiv) {
-                throw new Error("Elemento '#creditosTela' não encontrado no HTML carregado.");
-            }
+            const creditosDiv = container.querySelector('#creditosTela');
 
             // Configura o botão de voltar
             const botaoMenu = creditosDiv.querySelector('.botaoVoltar');

@@ -23,7 +23,7 @@ export default class Jogo {                                                     
         this.niveis.push(nivel1);                                                                                        // PUXA OS NIVEIS EXISTENTES EM NIVEIS.JS
         this.niveis.push(nivel2);
         this.niveis.push(nivel3);
-        this.jogador = new Jogador(100, 400, 50, 50, "blue", this.canvas);                        // CRIA NOVO JOGADOR
+        this.jogador = new Jogador(100, 400, 50, 50, "blue");                        // CRIA NOVO JOGADOR
         this.configurarListeners()
     }
 
@@ -77,7 +77,7 @@ export default class Jogo {                                                     
             this.transitarParaProximoNivel();
             return;
         }
-        this.jogador.atualizar();
+        this.jogador.atualizar(this.canvas);
     }
 
     desenhar() {                                                                                                  // DESENHA ELEMENTOS APOS UPDATE
@@ -93,7 +93,7 @@ export default class Jogo {                                                     
         );
 
         // DEBUG
-        this.ctx.font = "12px Arial"; // Estilo da fonte
+        this.ctx.font = "12px Arial";
         this.ctx.fillText(
             `TPressed: ${this.niveis[this.nivelAtual].contadorT}`,
             700,

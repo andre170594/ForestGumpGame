@@ -2,17 +2,17 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 800px; /* Largura fixa do "quadro" */
-    height: 600px; /* Altura fixa do "quadro" */
+    width: 800px;
+    height: 600px;
     background-color: rgb(64, 19, 19);
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transform: translate(-50%, -50%); /* Centraliza o quadro na tela */
-    border: 2px solid white; /* Adiciona borda simulando um canvas */
-    border-radius: 10px; /* Bordas arredondadas para suavidade */
+    transform: translate(-50%, -50%);
+    border: 2px solid white; /
+    border-radius: 10px;
     z-index: 9999;
 }
 
@@ -34,17 +34,17 @@
 }
 
 .botaoMenu {
-    background-color: #007BFF; /* Azul */
+    background-color: #007BFF;
 }
 
 .botaoMenu:hover {
-    background-color: #0056b3; /* Azul mais escuro */
+    background-color: #0056b3;
 }
 
 .botaoCreditos {
-    background-color: #FF5733; /* Vermelho */
+    background-color: #FF5733;
 }
 
 .botaoCreditos:hover {
-    background-color: #c44129; /* Vermelho mais escuro */
+    background-color: #c44129;
 }

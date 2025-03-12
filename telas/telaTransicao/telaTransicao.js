@@ -10,7 +10,7 @@ export function mostrarTelaTransicao(sucesso, callbackAvancar, callbackReiniciar
 
             // Configura o botão
             const botao = transicaoDiv.querySelector('.botaoTransicao');
-            botao.textContent = sucesso ? "Próximo Nível" : "Tentar Novamente"; // Define o texto dinamicamente
+            botao.textContent = sucesso ? "Próximo Nível" : "Tentar Novamente";
 
             // Adiciona o evento de clique ao botão
             botao.addEventListener("click", () => {
@@ -18,7 +18,7 @@ export function mostrarTelaTransicao(sucesso, callbackAvancar, callbackReiniciar
                 if (sucesso && callbackAvancar) {
                     callbackAvancar(); // Avança para o próximo nível
                 } else if (!sucesso && callbackReiniciar) {
-                    callbackReiniciar(); // Reinicia o nível atual
+                    callbackReiniciar(); // Reinicia o nível atual (fatla definir esta funcao)
                 }
             });
 
