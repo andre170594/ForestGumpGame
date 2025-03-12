@@ -8,7 +8,8 @@ export default class Jogador {
         this.velocidadeY = 0;
         this.velocidadeX = 0;
         this.noChao = false;
-        this.canvas = canvas; // Guarda o canvas
+        this.canvas = canvas;
+        this.score = 0;
     }
 
     atualizar(gravidade) {
