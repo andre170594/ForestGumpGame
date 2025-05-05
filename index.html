@@ -5,16 +5,22 @@
     <meta charset="UTF-8">
     <title>Forrest Gump - O Jogo</title>
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="telas/telaTransicao/telaTransicao.css">
-    <link rel="stylesheet" href="telas/telaFinal/telaFinal.css">
-    <link rel="stylesheet" href="telas/telaCreditos/telaCreditos.css">
-    <link rel="stylesheet" href="telas/telaInicial/telaInicial.css">
 </head>
-<body >
 
-<canvas id="gameCanvas" width="800" height="600" style="display: none"></canvas>
+<body>
 
-<script type="module" src="scripts/main.js"></script>
+<div id="botoesTransicao">
+    <button id="btnComecar">Começar Jogo</button>
+    <button id="btnProximoNivel">Próximo Nível </button>
+    <button id="btnReiniciarNivel">Reiniciar Nível</button>
+    <button id="btnVoltarInicio">Voltar ao inicio</button>
+    <button id="btnCreditos">Ver Creditos </button>
+</div>
+
+
+<canvas id="gameCanvas" width="800" height="600"></canvas>
+
+<script type="module" src="models/main.js"></script>
 </body>
 
 </html>
