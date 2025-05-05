@@ -233,13 +233,13 @@ export default class Jogo {
         // retorna o nivel pronto a usar pela class Jogo
 
         var fundo = new Image(800, 600);
-        fundo.src = "assets/images/fundoLevel1Final.png";
-        const jogador = new Jogador(100, 600, 80, 140, "assets/images/Forrest2.png");
+        fundo.src = "assets/images/Lvl1/fundoLevel1Final.png";
+        const jogador = new Jogador(100, 600, 80, 140, "assets/images/CharLvl1/Run/forrest_frame1.png");
         return new NivelUm(this.canvas,jogador,"Corrida com obstáculos", fundo, {
-            gravidade: 0.4,
-            alturaChao: 520,
+            gravidade: 0.3,
+            alturaChao: 530,
             velocidade: 2,
-            alturaJump: -20,
+            alturaJump: 16,
             movimentoHorizontal: true
         });
     }
@@ -249,8 +249,8 @@ export default class Jogo {
         // retorna o nivel pronto a usar pela class Jogo
 
         var fundo = new Image(800, 600);
-        fundo.src = "assets/images/fundo2.jpg";
-        const jogador = new Jogador(100, 460, 50, 50, "assets/images/fundo2.jpg");
+        fundo.src = "assets/images/Lvl1/fundoLevel1Final.png";
+        const jogador = new Jogador(100, 460, 50, 50, "assets/images/CharLvl1/Run/forrest_frame1.png");
         return new NivelDois(this.canvas,jogador,"Football", fundo, {
             gravidade: 0.7,
             alturaChao: 500,

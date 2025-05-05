@@ -12,11 +12,32 @@ export default class NivelUm extends NivelBase {
         // Para controlar quando dar bônus por pontuação
         this.ultimoBonus = 0;
 
+        this.aplicaPropsDeLevelAoJogador();
+
+        // VIDAS E OBSTACULOS
+        this.obstaculos = [];
+        this.tempoUltimoObstaculo = 0;
+        this.tempoUltimaVida = 0;
+
+        this.imgPedra = new Image();
+        this.imgPedra.src = "assets/images/Lvl1/pedra.png";
+
+        this.imgTronco = new Image();
+        this.imgTronco.src = "assets/images/Lvl1/wood2.png";
+
+        this.imgMuro = new Image();
+        this.imgMuro.src = "assets/images/Lvl1/wall2.png";
+
+        this.imgVida = new Image();
+        this.imgVida.src = "assets/images/Lvl1/vida.png";
+
+    }
+    aplicaPropsDeLevelAoJogador() {
         this.jogador.updateVarsPerLevel(
             0,
-            0.5,
-            16,
-            this.alturaChao - this.jogador.altura + 10,
+            this.gravidade,
+            this.alturaJump,
+            this.alturaChao-this.jogador.altura,
             3,
             [
                 "assets/images/CharLvl1/Run/forrest_frame3.png",
@@ -30,24 +51,6 @@ export default class NivelUm extends NivelBase {
                 "assets/images/CharLvl1/jump/forrest_jump2.png",
             ]
         );
-
-        // VIDAS E OBSTACULOS
-        this.obstaculos = [];
-        this.tempoUltimoObstaculo = 0;
-        this.tempoUltimaVida = 0;
-
-        this.imgPedra = new Image();
-        this.imgPedra.src = "assets/images/pedra.png";
-
-        this.imgTronco = new Image();
-        this.imgTronco.src = "assets/images/wood2.png";
-
-        this.imgMuro = new Image();
-        this.imgMuro.src = "assets/images/wall2.png";
-
-        this.imgVida = new Image();
-        this.imgVida.src = "assets/images/vida.png";
-
     }
 
     // Logic
